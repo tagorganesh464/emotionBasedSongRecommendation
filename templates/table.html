@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Detection Table</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+</head>
+<body>
+
+    <h2>Detected Songs</h2>
+    <table id="songsTable" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <!-- Update column headers based on your DataFrame -->
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+                <!-- Add more columns as needed -->
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const data = JSON.parse(`{{ data|tojson|safe }}`);
+            $('#songsTable').DataTable({
+                data: data,
+                columns: [
+                    { data: 'column1' }, // Replace with actual DataFrame keys
+                    { data: 'column2' },
+                    { data: 'column3' }
+                    // Add more columns as needed
+                ]
+            });
+        });
+    </script>
+
+</body>
+</html>
